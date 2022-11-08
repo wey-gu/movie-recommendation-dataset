@@ -3,6 +3,7 @@ raw_data/
 dbt.session.sql
 .vscode/
 seeds/
+err/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
