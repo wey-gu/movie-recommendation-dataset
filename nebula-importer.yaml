@@ -19,95 +19,96 @@ clientSettings:
       SUBMIT JOB STATS;
 logPath: /data/err/test.log
 files:
-  # - path: /data/movies.csv
-  #   failDataPath: /data/err/
-  #   batchSize: 128
-  #   inOrder: true
-  #   type: csv
-  #   csv:
-  #     withHeader: true
-  #     withLabel: false
-  #   schema:
-  #     type: vertex
+  - path: /data/movies.csv
+    failDataPath: /data/err/
+    batchSize: 128
+    inOrder: true
+    type: csv
+    csv:
+      withHeader: true
+      withLabel: false
+    schema:
+      type: vertex
 
-  # - path: /data/people.csv
-  #   failDataPath: /data/err/
-  #   batchSize: 128
-  #   inOrder: true
-  #   type: csv
-  #   csv:
-  #     withHeader: true
-  #     withLabel: false
-  #   schema:
-  #     type: vertex
-  # - path: /data/genres.csv
-  #   failDataPath: /data/err/
-  #   batchSize: 128
-  #   inOrder: true
-  #   type: csv
-  #   csv:
-  #     withHeader: true
-  #     withLabel: false
-  #   schema:
-  #     type: vertex
-  # - path: /data/acted_by.csv
-  #   failDataPath: /data/err/
-  #   batchSize: 128
-  #   type: csv
-  #   csv:
-  #     withHeader: true
-  #     withLabel: false
-  #   schema:
-  #     type: edge
-  #     edge:
-  #       name: acted_by
-  #       withRanking: false
+  - path: /data/people.csv
+    failDataPath: /data/err/
+    batchSize: 128
+    inOrder: true
+    type: csv
+    csv:
+      withHeader: true
+      withLabel: false
+    schema:
+      type: vertex
 
-  # - path: /data/directed_by.csv
-  #   failDataPath: /data/err/
-  #   batchSize: 128
-  #   type: csv
-  #   csv:
-  #     withHeader: true
-  #     withLabel: false
-  #   schema:
-  #     type: edge
-  #     edge:
-  #       name: directed_by
-  #       withRanking: false
+  - path: /data/genres.csv
+    failDataPath: /data/err/
+    batchSize: 128
+    inOrder: true
+    type: csv
+    csv:
+      withHeader: true
+      withLabel: false
+    schema:
+      type: vertex
+  - path: /data/acted_by.csv
+    failDataPath: /data/err/
+    batchSize: 128
+    type: csv
+    csv:
+      withHeader: true
+      withLabel: false
+    schema:
+      type: edge
+      edge:
+        name: acted_by
+        withRanking: false
 
-  # - path: /data/with_genre.csv
-  #   failDataPath: /data/err/
-  #   batchSize: 128
-  #   type: csv
-  #   csv:
-  #     withHeader: true
-  #     withLabel: false
-  #   schema:
-  #     type: edge
-  #     edge:
-  #       name: with_genre
-  #       withRanking: false
+  - path: /data/directed_by.csv
+    failDataPath: /data/err/
+    batchSize: 128
+    type: csv
+    csv:
+      withHeader: true
+      withLabel: false
+    schema:
+      type: edge
+      edge:
+        name: directed_by
+        withRanking: false
 
-  # - path: /data/user_watched_movies.csv
-  #   failDataPath: /data/err/
-  #   batchSize: 128
-  #   type: csv
-  #   csv:
-  #     withHeader: false
-  #     withLabel: false
-  #   schema:
-  #     type: edge
-  #     edge:
-  #       name: watched
-  #       srcVID:
-  #         index: 0
-  #       dstVID:
-  #         index: 3
-  #       props:
-  #         - name: rate
-  #           type: double
-  #           index: 1
+  - path: /data/with_genre.csv
+    failDataPath: /data/err/
+    batchSize: 128
+    type: csv
+    csv:
+      withHeader: true
+      withLabel: false
+    schema:
+      type: edge
+      edge:
+        name: with_genre
+        withRanking: false
+
+  - path: /data/user_watched_movies.csv
+    failDataPath: /data/err/
+    batchSize: 128
+    type: csv
+    csv:
+      withHeader: false
+      withLabel: false
+    schema:
+      type: edge
+      edge:
+        name: watched
+        srcVID:
+          index: 0
+        dstVID:
+          index: 3
+        props:
+          - name: rate
+            type: double
+            index: 1
 
   - path: /data/user_watched_movies.csv
     failDataPath: /data/err/
