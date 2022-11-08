@@ -1,3 +1,9 @@
+# This project / dbt
+raw_data/
+dbt.session.sql
+.vscode/
+seeds/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

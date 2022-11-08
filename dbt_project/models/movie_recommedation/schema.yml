@@ -1,0 +1,91 @@
+
+version: 2
+
+models:
+  - name: user_watched_movies
+    description: "The edges between users and movies they have watched"
+    columns:
+      - name: user_id
+        description: "user id"
+        tests:
+          - not_null
+      - name: movie_id
+        description: "movie id"
+        tests:
+          - not_null
+      - name: rating
+        description: "rating given by user to movie"
+        tests:
+          - not_null
+  - name: directed_by
+    description: "The edges between movies and directors"
+    columns:
+      - name: movie_id
+        description: "movie id"
+        tests:
+          - not_null
+      - name: person_id
+        description: "director's person id"
+        tests:
+          - not_null
+  - name: acted_by
+    description: "The edges between movies and actors"
+    columns:
+      - name: movie_id
+        description: "movie id"
+        tests:
+          - not_null
+      - name: person_id
+        description: "actor's person id"
+        tests:
+          - not_null
+  - name: with_genre
+    description: "The edges between movies and genres"
+    columns:
+      - name: movie_id
+        description: "movie id"
+        tests:
+          - not_null
+      - name: genre_id
+        description: "genre id"
+        tests:
+          - not_null
+  - name: people
+    description: "People in the movie database"
+    columns:
+      - name: person_id
+        description: "person id"
+        tests:
+          - not_null
+      - name: name
+        description: "person's name"
+        tests:
+          - not_null
+      - name: birthdate
+        description: "person's birth date"
+        tests:
+          - not_null
+      - name: gender
+        description: "person's gender"
+  - name: genres
+    description: "Genres in the movie database"
+    columns:
+      - name: genre_id
+        description: "genre id"
+        tests:
+          - not_null
+      - name: genre_name
+        description: "genre name"
+        tests:
+          - not_null
+  - name: movies
+    description: "Movies in the movie database"
+    columns:
+      - name: movie_id
+        description: "movie id"
+        tests:
+          - not_null
+      - name: movie_name
+        description: "movie title"
+        tests:
+          - not_null
