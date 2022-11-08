@@ -88,7 +88,9 @@ Add raw CSV files into data warehouse for further processing.
 
 ## Transform Data with dbt
 
-Process data for NebulaGraph Import
+Process data for NebulaGraph Import.
+
+The transformation magic was done via the [model files](https://github.com/wey-gu/movie-recommendation-dataset/tree/main/dbt_project/models/movie_recommedation) in `dbt_project/models`.
 
 ```bash
 dbt run -m acted_by
@@ -141,6 +143,8 @@ CREATE EDGE watched(rate float);
 ### Import Data
 
 We use [Nebula Importer](https://github.com/vesoft-inc/nebula-importer) to import data into NebulaGraph.
+
+The configuration file that tells Nebula Importer how CSV should be loaded into NebulaGraph is [here](https://github.com/wey-gu/movie-recommendation-dataset/blob/main/nebula-importer.yaml).
 
 ```bash
 cd ..
