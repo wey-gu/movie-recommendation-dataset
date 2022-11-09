@@ -1,3 +1,25 @@
+This is a movie Knowledge Graph Dataset ready for NebulaGraph.
+
+The dataset comes from [OMDB](https://www.omdb.org/en/us/content/Help:DataDownload) for cast and movie genre and [MovieLens](https://grouplens.org/datasets/movielens/) for real world user-movie interaction records.
+
+## Scehma of the Dataset
+
+The data aggregates [OMDB](https://www.omdb.org/en/us/content/Help:DataDownload) and [MovieLens](https://grouplens.org/datasets/movielens/) to become a knowledge graph with schema:
+
+- Tag:
+  - user(user_id)
+  - movie(name)
+  - person(name, birthdate)
+  - genre(name)
+
+- Edge Type:
+  - watched(rate(double))
+  - with_genre
+  - directed_by
+  - acted_by
+
+<img width="843" alt="schema_0" src="https://user-images.githubusercontent.com/1651790/200805712-296d97bb-7871-443d-abb6-c28900de5970.png">
+
 ## dbt env preparation
 
 Install dbt and dbt-postgres plugin.
