@@ -12,7 +12,16 @@ clientSettings:
     address: graphd1:9669,graphd2:9669
   postStart:
     commands: |
+      CREATE SPACE IF NOT EXISTS moviegraph(partition_num=10,replica_factor=1,vid_type=fixed_string(32));
       USE moviegraph;
+      CREATE TAG IF NOT EXISTS person(name string, birthdate string);
+      CREATE TAG IF NOT EXISTS movie(name string);
+      CREATE TAG IF NOT EXISTS genre(name string);
+      CREATE TAG IF NOT EXISTS user(user_id string);
+      CREATE EDGE IF NOT EXISTS acted_by();
+      CREATE EDGE IF NOT EXISTS directed_by();
+      CREATE EDGE IF NOT EXISTS with_genre();
+      CREATE EDGE IF NOT EXISTS watched(rate float);
     afterPeriod: 8s
   preStop:
     commands: |
