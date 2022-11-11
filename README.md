@@ -2,6 +2,9 @@ This is a movie Knowledge Graph Dataset ready for NebulaGraph.
 
 The dataset comes from [OMDB](https://www.omdb.org/en/us/content/Help:DataDownload) for cast and movie genre and [MovieLens](https://grouplens.org/datasets/movielens/) for real world user-movie interaction records.
 
+<img width="1106" alt="modeling_omdb_movielens" src="https://user-images.githubusercontent.com/1651790/201309981-eacd07c3-01ad-46ba-b4d3-ba66a21b952a.png">
+
+
 ## Scehma of the Dataset
 
 The data aggregates [OMDB](https://www.omdb.org/en/us/content/Help:DataDownload) and [MovieLens](https://grouplens.org/datasets/movielens/) to become a knowledge graph with schema:
@@ -19,6 +22,11 @@ The data aggregates [OMDB](https://www.omdb.org/en/us/content/Help:DataDownload)
   - acted_by
 
 <img width="843" alt="schema_0" src="https://user-images.githubusercontent.com/1651790/200805712-296d97bb-7871-443d-abb6-c28900de5970.png">
+
+## Mapping between two Tabular datasources and NebulaGraph property graph model
+
+<img width="897" alt="schema_mapping_to_graph" src="https://user-images.githubusercontent.com/1651790/201310261-85c40a50-5baa-494c-8970-3187a870d1d9.png">
+
 
 ## dbt env preparation
 
