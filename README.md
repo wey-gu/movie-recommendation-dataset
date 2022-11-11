@@ -27,6 +27,15 @@ The data aggregates [OMDB](https://www.omdb.org/en/us/content/Help:DataDownload)
 
 <img width="897" alt="schema_mapping_to_graph" src="https://user-images.githubusercontent.com/1651790/201310261-85c40a50-5baa-494c-8970-3187a870d1d9.png">
 
+## ELT Process
+
+- Raw Data wangling
+- Data Loading into Data Warehouse(Postgress)
+- Transform Data into the form ready for Property Graph Model(dbt), export as CSV
+- Load the CSV files into NebulaGraph(Nebula-Importer)
+
+![ETL_dbt_nebulagraph_importer](https://user-images.githubusercontent.com/1651790/201317930-c4d0149d-6add-4a9b-a353-84fe73004625.png)
+
 
 ## dbt env preparation
 
