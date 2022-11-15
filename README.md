@@ -4,6 +4,9 @@ The dataset comes from [OMDB](https://www.omdb.org/en/us/content/Help:DataDownlo
 
 <img width="1106" alt="modeling_omdb_movielens" src="https://user-images.githubusercontent.com/1651790/201309981-eacd07c3-01ad-46ba-b4d3-ba66a21b952a.png">
 
+## How to use this Dataset
+
+Refer to https://www.siwei.io/recommendation-system-with-graphdb/
 
 ## Scehma of the Dataset
 
