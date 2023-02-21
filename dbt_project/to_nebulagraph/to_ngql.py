@@ -91,6 +91,13 @@ convert_node_records_to_ngql(
     indexes=[0, 1, 2],
 )
 
+convert_node_records_to_ngql(
+    "user_watched_movies.csv",
+    "user.ngql",
+    prefix="INSERT VERTEX `user`() VALUES ",
+    indexes=[0],
+)
+
 convert_edge_records_to_ngql(
     "acted_by.csv",
     "acted_by.ngql",
