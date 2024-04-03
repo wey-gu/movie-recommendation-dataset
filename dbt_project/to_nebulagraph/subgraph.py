@@ -32,8 +32,9 @@ def sub_graph(max=300):
     user_watch_movie_df = get_data_frame(
         "user_watched_movies.csv", ["user_id", "rate", "name", "movie_id", "genres"]
     )
-
-    sub_movie_df = movie_df.sample(n=max, ignore_index=True)
+    # do not use sample, so that the result is consistent
+    # sub_movie_df = movie_df.sample(n=max, ignore_index=True)
+    sub_movie_df = movie_df.head(max)
     sub_movie_df.to_csv("sub_movie.csv", index=False)
     # people
     sub_actor_act_movie_df = pd.merge(sub_movie_df, actor_act_movie_df, on=["movie_id"], how="left")
