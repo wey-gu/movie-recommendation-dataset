@@ -32,36 +32,36 @@ CREATE GRAPH movie TYPED movie_type
 def to_ngql(output):
     data = []
     data.append(schema)
-    data.extend(convert_node_to_ngql("sub_movie.csv", "USE movie INSERT OR REPLACE NODE Movie ", row_fn_movie))
-    data.extend(convert_node_to_ngql("sub_actor.csv", "USE movie INSERT OR REPLACE NODE Actor ", row_fn_actor))
+    data.extend(convert_node_to_ngql("sub_movie.csv", "USE movie INSERT OR REPLACE Movie ", row_fn_movie))
+    data.extend(convert_node_to_ngql("sub_actor.csv", "USE movie INSERT OR REPLACE Actor ", row_fn_actor))
     data.extend(
-        convert_node_to_ngql("sub_director.csv", "USE movie INSERT OR REPLACE NODE Director ", row_fn_director)
+        convert_node_to_ngql("sub_director.csv", "USE movie INSERT OR REPLACE Director ", row_fn_director)
     )
-    data.extend(convert_node_to_ngql("sub_user.csv", "USE movie INSERT OR REPLACE NODE User ", row_fn_user))
-    data.extend(convert_node_to_ngql("sub_gener.csv", "USE movie INSERT OR REPLACE NODE Gener ", row_fn_gener))
+    data.extend(convert_node_to_ngql("sub_user.csv", "USE movie INSERT OR REPLACE User ", row_fn_user))
+    data.extend(convert_node_to_ngql("sub_gener.csv", "USE movie INSERT OR REPLACE Gener ", row_fn_gener))
     data.extend(
         convert_egde_to_ngql(
-            "sub_actor_act_movie.csv", "USE movie INSERT OR REPLACE EDGE Act ", row_fn_act_movie
+            "sub_actor_act_movie.csv", "USE movie INSERT OR REPLACE Act ", row_fn_act_movie
         )
     )
     data.extend(
         convert_egde_to_ngql(
             "sub_director_direct_movie.csv",
-            "USE movie INSERT OR REPLACE EDGE Direct ",
+            "USE movie INSERT OR REPLACE Direct ",
             row_fn_direct_movie,
         )
     )
     data.extend(
         convert_egde_to_ngql(
             "sub_user_watched_movies.csv",
-            "USE movie INSERT OR REPLACE EDGE Watch ",
+            "USE movie INSERT OR REPLACE Watch ",
             row_fn_watch_movie,
         )
     )
     data.extend(
         convert_egde_to_ngql(
             "sub_movie_withgenre_genre.csv",
-            "USE movie INSERT OR REPLACE EDGE WithGener ",
+            "USE movie INSERT OR REPLACE WithGener ",
             row_fn_withgener,
         )
     )
