@@ -67,13 +67,13 @@ def sub_graph(max=300):
     _sub_user_watch_df = get_nonan_df(sub_user_df, ["user_id", "rate", "movie_id"])
     _sub_user_watch_df.to_csv("sub_user_watched_movies.csv", index=False)
 
-    # gener
+    # genre
     sub_movie_withgenre_genre_df = pd.merge(
         sub_movie_df, movie_withgenre_genre_df, on=["movie_id"], how="left"
     )
-    sub_gener_df = pd.merge(sub_movie_withgenre_genre_df, genre_df, on=["genre_id"], how="left")
-    _sub_gener_df = get_nonan_df(sub_gener_df, ["genre_id", "name_y"])
-    _sub_gener_df.to_csv("sub_gener.csv", index=False)
+    sub_genre_df = pd.merge(sub_movie_withgenre_genre_df, genre_df, on=["genre_id"], how="left")
+    _sub_genre_df = get_nonan_df(sub_genre_df, ["genre_id", "name_y"])
+    _sub_genre_df.to_csv("sub_genre.csv", index=False)
     _sub_movie_withgenre_genre_df = get_nonan_df(
         sub_movie_withgenre_genre_df, ["movie_id", "genre_id"]
     )

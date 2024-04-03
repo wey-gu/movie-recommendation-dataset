@@ -13,11 +13,11 @@ CREATE GRAPH TYPE movie_type AS {
 (Director LABELS Director&Person {id INT PRIMARY KEY, name STRING, birthDate Date}),
 (User LABELS Person {id INT PRIMARY KEY}),
 (Movie LABELS Movie {id INT PRIMARY KEY, name STRING}),
-(Gener LABELS Gener {id INT PRIMARY KEY, name STRING}),
+(Genre LABELS Genre {id INT PRIMARY KEY, name STRING}),
 (Actor)-[Act:Acrt]->(Movie),
 (Director)-[Direct:Direct]->(Movie),
 (User)-[Watch:Watch {rate float}]->(Movie),
-(Movie)-[WithGener:WithGener]->(Gener)
+(Movie)-[WithGenre:WithGenre]->(Genre)
 }
 """
 
@@ -38,7 +38,7 @@ def to_ngql(output):
         convert_node_to_ngql("sub_director.csv", prefix, row_fn_director)
     )
     data.extend(convert_node_to_ngql("sub_user.csv", prefix, row_fn_user))
-    data.extend(convert_node_to_ngql("sub_gener.csv",prefix, row_fn_gener))
+    data.extend(convert_node_to_ngql("sub_genre.csv",prefix, row_fn_genre))
     data.extend(
         convert_egde_to_ngql(
             "sub_actor_act_movie.csv",prefix, row_fn_act_movie
@@ -62,7 +62,7 @@ def to_ngql(output):
         convert_egde_to_ngql(
             "sub_movie_withgenre_genre.csv",
             prefix,
-            row_fn_withgener,
+            row_fn_withgenre,
         )
     )
     with open(output, "w") as output_ngql:
@@ -71,7 +71,7 @@ def to_ngql(output):
 
 
 # USE movie INSERT OR IGNORE (::Actor{id:1,name:"player_1"), (::Actor{id:2,name:"player_1"), 
-def convert_node_to_ngql(input_file, prefix, row_fn, batch_size=256, ignore_header=True):
+def convert_node_to_ngql(input_file, row_fn, prefix=prefix, batch_size=256, ignore_header=True):
     with open(input_file, "r") as input_csv:
         ignored = False
         csv_reader = csv.reader(input_csv)
@@ -93,7 +93,8 @@ def convert_node_to_ngql(input_file, prefix, row_fn, batch_size=256, ignore_head
         return queries
 
 
-# USE ldbc INSERT OR REPLACE (::Act{id:1}-[{})->{id:2}]), (::Act{id:3}-[{})->{id:4}]),
+# USE movie INSERT OR REPLACE (::Act{id:1}-[{})->{id:2}]), (::Act{id:3}-[{})->{id:4}]),
+# USE movie Match(a{})
 def convert_egde_to_ngql(input_file, prefix, row_fn, batch_size=256, ignore_header=True):
     with open(input_file, "r") as input_csv:
         csv_reader = csv.reader(input_csv)
@@ -140,8 +141,8 @@ def row_fn_user(row):
     return f"(::User{{id: {row[0][2:]}}})"
 
 
-def row_fn_gener(row):
-    return f'(::Gener{{id: {row[0][2:]}, name: "{row[1]}"}})'
+def row_fn_genre(row):
+    return f'(::Genre{{id: {row[0][2:]}, name: "{row[1]}"}})'
 
 
 def row_fn_act_movie(row):
@@ -156,5 +157,5 @@ def row_fn_watch_movie(row):
     return f"(::Watch{{id: {row[0][2:]}}})-[{{rate: {row[1]}}}]->({{id: {row[2]}}})"
 
 
-def row_fn_withgener(row):
-    return f"(::WithGener{{id: {row[0]}}})-[{{}}]->({{id: {row[1][2:]}}})"
+def row_fn_withgenre(row):
+    return f"(::WithGenre{{id: {row[0]}}})-[{{}}]->({{id: {row[1][2:]}}})"
