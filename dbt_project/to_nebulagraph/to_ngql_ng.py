@@ -141,16 +141,16 @@ def row_fn_genre(row):
 
 
 def row_fn_act_movie(row):
-    return f'Match (a@Actor{{id: {row[0][2:]}}}), (b@Movie{{id: {row[1]}}}) Insert (a)-[:Act]->(b)'
+    return f'Match (a@Actor{{id: {row[0][2:]}}}), (b@Movie{{id: {row[1]}}}) Insert Or Replace (a)-[:Act]->(b)'
 
 
 def row_fn_direct_movie(row):
-    return f'Match (a@Director{{id: {row[0][2:]}}}), (b@Movie{{id: {row[1]}}}) Insert (a)-[:Direct]->(b)'
+    return f'Match (a@Director{{id: {row[0][2:]}}}), (b@Movie{{id: {row[1]}}}) Insert Or Replace (a)-[:Direct]->(b)'
 
 
 def row_fn_watch_movie(row):
-    return f'Match (a@`User`{{id: {row[0][2:]}}}), (b@Movie{{id: {row[2]}}}) Insert (a)-[:Watch{{rate: {row[1]}}}]->(b)'
+    return f'Match (a@`User`{{id: {row[0][2:]}}}), (b@Movie{{id: {row[2]}}}) Insert Or Replace (a)-[:Watch{{rate: {row[1]}}}]->(b)'
 
 
 def row_fn_withgenre(row):
-    return f'Match (a@Movie{{id: {row[0]}}}), (b@Genre{{id: {row[1][2:]}}}) Insert (a)-[:WithGenre]->(b)'
+    return f'Match (a@Movie{{id: {row[0]}}}), (b@Genre{{id: {row[1][2:]}}}) Insert Or Replace (a)-[:WithGenre]->(b)'
