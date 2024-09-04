@@ -39,7 +39,7 @@ director_direct_movie_template = (
 )
 
 user_watched_movies_template = (
-    "table t{{user_id, movie_id, rate}}={} "
+    "table t{{user_id, rate, movie_id}}={} "
     "use movie for r in t match (a@`User`) where a.id=r.user_id "
     "match (b@`Movie`) where b.id=r.movie_id insert or replace (a)-[@Watch{{rate: r.rate}}]->(b)"
 )
